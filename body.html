@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Стандарты кодинга на PHP</title>
+        <link href=style.css rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    </head>
+<body>
+        <div style="background: #f9f6f0"> 
+            <div class="content">
+                <div style="padding-top: 10px; color: #494949; font-size: 18px; line-height: 1.5;">
+                    <h2>Стандарты кодинга на PHP</h2>
+                    
+                    <h3>1. Общие положения</h3>
+                    
+                    <ul>
+                        <li>
+                            <p>Разрешены только php-теги <code class="highlight"><span class="p">&lt;?php</span></code> и <code class="highlight"><span class="p">&lt;?=</span></code></p>
+                        </li>
+                        <li>
+                            <p>В качестве отступов ДОЛЖНЫ быть использованы 4 пробела, никаких табуляций</p>
+                        </li>
+                        <li>
+                            <p>НЕТ СТРОГИХ ограничений по длине строки, но она ДОЛЖНА быть до 120 символов, в идеале – 80 символов</p>
+                        </li>
+                        <li>
+                            <p>Пустые линии МОГУТ быть добавлены для улучшения читаемости кода</p>
+                        </li>
+                        <li>
+                            <p>В одной линии ДОЛЖНО содержаться не более одного выражения</p>
+                        </li>
+                        <li>
+                            <p>Все ключевые слова и служебные константы <code><span class="ct">true</span></code>, <code><span class="ct">false</span></code> и <code><span class="ct">null</span></code> ДОЛЖНЫ быть нижнего регистра</p>
+                        </li>
+                        <li>
+                            <p>Комментарии начинаются с двойного слеша <code><span class="ct">//</span></code> , после которого следует 1 пробел</p>
+                        </li>
+                        <li>
+                            <p>Рекомендуется называть все компоненты кода в соответствии с их предназначением. Этот подход улучшается читаемость кода</p>
+                        </li>
+                    </ul>
+                    
+                    <h3>2. Потоки управления, условия</h3>
+                    
+                    <ul>
+                        <li>
+                            <p>ДОЛЖЕН быть 1 пробел до <code><span class="ct">(</span></code></p>
+                        </li>
+                        <li>
+                            <p>НЕ ДОЛЖНО быть пробелов после <code><span class="ct">(</span></code></p>
+                        </li>
+                        <li>
+                            <p>НЕ ДОЛЖНО быть пробелов до <code><span class="ct">)</span></code></p>
+                        </li>
+                        <li>
+                            <p>ДОЛЖЕН быть 1 пробел после <code><span class="ct">)</span></code></p>
+                        </li>
+                        <li>
+                            <p>Вместо <code><span class="ct">else if</span></code> следует использовать <code><span class="ct">elseif</span></code></p>
+                        </li>
+                        <li>
+                            <p>КРАЙНЕ желательно использовать операторы строгого тождества/несоответствия (<code><span class="ct">===</span></code>, <code><span class="ct">!==</span></code>) вместо обычного равенства/неравенства (<code><span class="ct">==</span></code>, <code><span class="ct">!=</span></code>) </p>
+                        </li>
+                        <li>
+                            <p>По обеим сторонам от операторов <u>в условиях</u> ДОЛЖНО быть по 1 пробелу</p>
+                        </li>
+                        <li>
+                            <p>Логические операторы И, ИЛИ записываются в виде <code><span class="ct">&&</span></code> , <code><span class="ct">||</span></code></p>
+                        </li>
+                        <li>
+                            <p>Перед открыв. фигурн. скобкой  <code><span class="ct">{</span></code>  НЕ ДОЛЖНО быть отступов, только 1 пробел</p>
+                        </li>
+                        <li>
+                            <p>После определения условия, начала цикла и т.п. после <code><span class="ct">{</span></code>  с новой строки начинается тело оператора с отступом</p>
+                        </li>
+                        <li>
+                            <p>По окончании написания тела, с новой строки и без отступов относительно строки объявления оператора ставится  <code><span class="ct">}</span></code></p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="v">$a</span> <span class="o">===</span> <span class="v">$b</span><span class="o">) {</span>
+    <span class="c">// ...</span>
+<span class="o">}</span> <span class="k">elseif</span> <span class="o">(</span><span class="v">$a</span> <span class="o">!==</span> <span class="n">0</span><span class="o">) {</span>
+    <span class="c">// ...</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="c">// ...</span>
+<span class="o">}</span></code></pre>
+                        </div>
+                        <li>
+                            <p>Тернарные операторы нельзя вкладывать друг в друга. С обеих сторон от операторов <code><span class="ct">?</span></code> и <code><span class="ct">:</span></code> ДОЛЖНО быть по 1 пробелу</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="v">$var</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span>
+<span class="v">$isTrue</span> <span class="o">= (</span><span class="v">$var</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="o">?</span> <span class="k">false</span> <span class="o">:</span> <span class="k">true</span><span class="o">);</span> <span class="c">// returns false</span></code></pre>
+                        </div>
+                        <div class="highlight">
+                            <pre class="highlight"><code><span class="v">$message</span> <span class="o">=</span> <span class="s">'Hello '</span><span class="o">.(</span><span class="v">$user</span><span class="o">-></span><span class="a">isLoggedIn</span><span class="o">() ?</span> <span class="v">$user</span><span class="o">-></span><span class="a">getName</span><span class="o">(</span><span class="s">'first_name'</span><span class="o">) :</span> <span class="s">'Guest'</span><span class="o">);</span></code></pre>
+                        </div>
+                        <li>
+                            <p style="line-height: 1.75">В конструкциях <code><span class="ct">switch-case</span></code> условия <code><span class="ct">case</span></code> ДОЛЖНЫ быть с отступом от <code><span class="ct">switch</span></code>, тело <code><span class="ct">case</span></code> ДОЛЖНО быть с отступом от <code><span class="ct">case</span></code>, а <code><span class="ct">break</span></code> ДОЛЖНО быть на одном уровне с телом <code><span class="ct">case</span></code>. Если тело <code><span class="ct">case</span></code> не пустое и необходимо отрабатывание кода, в конце ДОЛЖЕН быть комментарий <code><span class="ct">// no break</span></code></p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">switch</span> <span class="o">(</span><span class="v">$expr</span><span class="o">) {</span>
+    <span class="k">case</span> <span class="n">0</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s">'First case, with a break'</span><span class="o">:</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="n">1</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s">'Second case, which falls through'</span><span class="o">;</span>
+        <span class="c">// no break</span>
+    <span class="k">case</span> <span class="n">2</span><span class="o">:</span>
+    <span class="k">case</span> <span class="n">3</span><span class="o">:</span>
+    <span class="k">case</span> <span class="n">4</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s">'Third case, return instead of break'</span><span class="o">;</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s">'Default case'</span><span class="o">;</span>
+<span class="o">}</span></code></pre>
+                        </div>
+                        <li>
+                            <p>Конструкция <code><span class="ct">for</span></code> выглядит следующим образом</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="v">$i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="v">$i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="v">$i</span><span class="o">++) {</span>
+    <span class="c">// for body</span>
+<span class="o">}</span></code></pre>
+                        </div>
+                        <li>
+                            <p>Конструкция <code><span class="ct">foreach</span></code> выглядит следующим образом</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">foreach</span> <span class="o">(</span><span class="v">$iterable</span> <span class="ow">as</span> <span class="v">$key</span> <span class="o">=></span> <span class="v">$value</span><span class="o">) {</span>
+    <span class="c">// foreach body</span>
+<span class="o">}</span></code></pre>
+                        </div>
+                        <li>
+                            <p>Блок <code><span class="ct">try-catch</span></code> выглядит следующим образом</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+    <span class="c">// try body</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span>FirstExceptionType <span class="v">$e</span><span class="o">) {</span>
+    <span class="c">// catch body</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span>OtherExceptionType <span class="v">$e</span><span class="o">) {</span>
+    <span class="c">// catch body</span>
+<span class="o">}</span></code></pre>
+                        </div>
+                    </ul>
+                    
+                    <h3>3. Функции и замыкания</h3>
+                    
+                    <ul>
+                        <li>
+                            <p>Имя функции ДОЛЖНО быть в форматe <code><span class="ct">camelCase</span></code></p>
+                        </li>
+                        <li>
+                            <p>При объявлении и вызове функции между ее именем и открывающейся круглой скобкой НЕ ДОЛЖНО быть пробелов</p>
+                        </li>
+                        <li>
+                            <p>В круглых скобках перед параметрами/аргументами НЕ ДОЛЖНЫ быть пробелов, после них идет запятая, за которой ДОЛЖЕН стоять 1 пробел</p>
+                        </li>
+                        <li>
+                            <p>Аргументы с дефолтными значениями ДОЛЖНЫ быть в конце списка аргументов</p>
+                        </li>
+                        <li>
+                            <p>Перед открыв. фигурн. скобкой <code><span class="ct">{</span></code> НЕ ДОЛЖНО быть отступов, только 1 пробел</p>
+                        </li>
+                        <li>
+                            <p>После открыв. фигурн. скобки начинается тело функции с новой строки с отступом</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">function</span> <span class="f">foo</span><span class="o">(</span><span class="v">$arg1</span><span class="o">,</span> <span class="v">$arg2</span><span class="o">) {</span>
+    <span class="c">// body</span>
+<span class="o">}</span></code></pre>
+                        </div>
+                        <li>
+                            <p>Список аргументов МОЖЕТ быть разбит в несколько строк. Каждый пункт ДОЛЖЕН начинаться с новой строки с отступом</p>
+                        </li>
+                        <li>
+                            <p style="line-height: 1.75">Когда список заканчивается, закрывающаяся круглая скобка ДОЛЖНА быть с новой строки на уровне объявления замыкания. Далее между круглой и фигурной скобкой ДОЛЖЕН быть 1 пробел</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">function</span> <span class='f'>bar</span><span class="o">(</span>
+    <span class="v">$arg1</span><span class="o">,</span>
+    <span class="v">$arg2</span><span class="o">,</span>
+    <span class="v">$arg3</span><span class="o">,</span>
+    <span class="v">$arg4</span>
+<span class="o">) {</span>
+    <span class="c">// body</span>
+<span class="o">}</span></code></pre>
+                        </div>
+                        <li>
+                            <p>Замыкания ДОЛЖНЫ быть объявлены после слова <code><span class="ct">function</span></code> через пробел, а также ДОЛЖНЫ быть пробелы до и после слова use</p>
+                        </li>
+                        <li>
+                            <p style="line-height: 1.75">Открывающаяся фигурная скобка ДОЛЖНА быть в строке объявления замыкания, а закрывающаяся скобка - на следующей строке после тела замыкания, после скобки ДОЛЖНА идти точка с запятой <code><span class="ct">;</span></code></p>
+                        </li>
+                        <li>
+                            <p>Замыкания объявляются следующим образом</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="v">$closureWithArgs</span> <span class="o">=</span> <span class="k">function</span> <span class="o">(</span><span class="v">$arg1</span><span class="o">,</span> <span class="v">$arg2</span><span class="o">) {</span>
+    <span class="c">// body</span>
+<span class="o">};</span></code></pre>
+                        </div>
+                        <div class="highlight">
+                            <pre class="highlight"><code><span class="v">$closureWithArgs</span> <span class="o">=</span> <span class="k">function</span> <span class="o">(</span><span class="v">$arg1</span><span class="o">,</span> <span class="v">$arg2</span><span class="o">)</span> <span class="k">use</span> <span class="o">(</span><span class="v">$var1</span><span class="o">,</span> <span class="v">$var2</span><span class="o">) {</span>
+    <span class="c">// body</span>
+<span class="o">};</span></code></pre>
+                        </div>
+                        <li>
+                            <p>Список аргументов/переменных МОЖЕТ быть разбит в несколько строк по аналогии с функциями</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="v">$longArgs_noVars</span> <span class="o">=</span> <span class="k">function</span> <span class="o">(</span>
+    <span class="v">$longArgument</span><span class="o">,</span>
+    <span class="v">$longerArgument</span><span class="o">,</span>
+    <span class="v">$muchLongerArgument</span>
+<span class="o">) {</span>
+    <span class="c">// body</span>
+<span class="o">};</span></code></pre>
+                        </div>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="v">$longArgs_noVars</span> <span class="o">=</span> <span class="k">function</span> <span class="o">()</span> <span class="k">use</span> <span class="o">(</span>
+    <span class="v">$longVar1</span><span class="o">,</span>
+    <span class="v">$longerVar2</span><span class="o">,</span>
+    <span class="v">$muchLongerVar3</span>
+<span class="o">) {</span>
+    <span class="c">// body</span>
+<span class="o">};</span></code></pre>
+                        </div>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="v">$longArgs_noVars</span> <span class="o">=</span> <span class="k">function</span> <span class="o">(</span>
+    <span class="v">$longArgument</span><span class="o">,</span>
+    <span class="v">$longerArgument</span><span class="o">,</span>
+    <span class="v">$muchLongerArgument</span>
+<span class="o">)</span> <span class="k">use</span> <span class="o">(</span>
+    <span class="v">$longVar1</span><span class="o">,</span>
+    <span class="v">$longerVar2</span><span class="o">,</span>
+    <span class="v">$muchLongerVar3</span>
+<span class="o">) {</span>
+    <span class="c">// body</span>
+<span class="o">};</span></code></pre>
+                        </div>
+                    </ul>
+                    
+                    <h3>4. Классы, методы и свойства</h3>
+                    <ul>
+                        <li>
+                            <p>К термину “класс” относятся все классы, интерфейсы и т.п.</p>
+                        </li>
+                        <li>
+                            <p>Все служебные слова ДОЛЖНЫ быть нижнего регистра</p>
+                        </li>
+                        <li>
+                            <p>Имена классов ДОЛЖНЫ быть именами существительными и начинаться с большой буквы. Если имя состоит из нескольких слов, то все слова также с большой буквы: <code><span class="ct">StudlyCase</span></code></p>
+                        </li>
+                        <li>
+                            <p>Имена интерфейсов ДОЛЖНЫ быть именами прилагательными</p>
+                        </li>
+                        <li>
+                            <p>Имена методов ДОЛЖНЫ быть либо глаголами, либо сочетанием глагол-существительное и начинаться с маленькой буквы, каждое последующее слово – с большой: <code><span class="ct">camelCase</span></code></p>
+                        </li>
+                        <li>
+                            <p>Имена свойств классов и переменных ДОЛЖНЫ быть именами существительными и начинаться с маленькой буквы, каждое последующее слово – с большой</p>
+                        </li>
+                        <li>
+                            <p style="line-height: 1.75">Имена констант ДОЛЖНЫ быть именами существительными. Все буквы в имени – верхнего регистра, а между словами должны стоять знаки нижнего подчеркивания. (Обычно константы объявляются с <code><span class="ct">public static</span></code> или <code><span class="ct">final</span></code> модификаторами)</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">const</span> DATE_APPROVED <span class="o">=</span> <span class="s">'2012-06-01'</span><span class="o">;</span></code></pre>
+                        </div>
+                        <li>
+                            <p>После объявления классов и методов открыв. фигурная скобка ДОЛЖНА переходить на следующую строку без отступов</p>
+                        </li>
+                        <li>
+                            <p>Модификаторы классов пишутся в одну строку без переносов</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">class</span> ClassName <span class="k">extends</span> ParentClassName <span class="k">implements</span> Interface
+<span class="o">{</span>
+    <span class="c">// Class definition</span>
+<span class="o">}</span></code></pre>
+                        </div>
+                        <li>
+                            <p>Если интерфейсов слишком много, то каждый ДОЛЖЕН быть перенесен на следующую строку с отступом</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="k">class</span> ClassName <span class="k">extends</span> ParentClassName <span class="k">implements</span>
+    Interface1<span class="o">,</span>
+    Interface2<span class="o">,</span>
+    Interface3<span class="o">,</span>
+    Interface4
+<span class="o">{</span>
+    <span class="c">// Class definition</span>
+<span class="o">}</span></code></pre>
+                        </div>
+                        <li>
+                            <p>Все методы без исключения ДОЛЖНЫ содержать модификаторы</p>
+                        </li>
+                        <li>
+                            <p style="line-height: 1.75">Методы и свойства ДОЛЖНЫ быть в следующем порядке: сначала свойства <code><span class="ct">final</span></code>, <code><span class="ct">public</span></code>, <code><span class="ct">protected</span></code>, <code><span class="ct">private</span></code>, <code><span class="ct">static</span></code>, затем методы <code><span class="ct">abstract</span></code>/<code><span class="ct">final</span></code>, <code><span class="ct">public</span></code>, <code><span class="ct">protected</span></code>, <code><span class="ct">private</span></code>, <code><span class="ct">static</span></code></p>
+                        </li>
+                        <li>
+                            <p>При вызове метода или функции между именем и скобками НЕ ДОЛЖНО быть пробелов. С двух сторон от <code><span class="ct">-></span></code> и <code><span class="ct">::</span></code> НЕ ДОЛЖНО быть пробелов</p>
+                        </li>
+                        <div class="highlight">
+<pre class="highlight"><code><span class="f">bar</span><span class="o">();</span>
+<span class="v">$foo</span><span class="o">-></span><span class="a">bar</span><span class="o">(</span><span class="v">$arg1</span><span class="o">);</span>
+Foo<span class="o">::</span><span class="a">bar</span><span class="o">(</span><span class="v">$arg2</span><span class="o">,</span> <span class="v">$arg3</span><span class="o">);</span></code></pre>
+                        </div>
+                    </ul>
+                <br/>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
